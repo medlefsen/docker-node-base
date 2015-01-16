@@ -25,8 +25,12 @@ RUN /build/redis.sh
 RUN rm -f /etc/service/redis/down
 RUN rm -f /etc/service/nginx/down
 
-
 RUN npm install -g grunt-cli
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ADD webapp.conf /etc/nginx/sites-available/default
+
+ONBUILD ADD . /home/app/webapp
+ONBUILD RUN cd /home/app/webapp && npm install && grunt
