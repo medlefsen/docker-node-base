@@ -27,6 +27,8 @@ RUN rm -f /etc/service/nginx/down
 
 RUN npm install -g grunt-cli
 
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y imagemagick
+
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
