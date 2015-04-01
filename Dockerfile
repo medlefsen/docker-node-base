@@ -13,7 +13,8 @@ CMD ["/sbin/my_init"]
 #   Build system and git.
 RUN /pd_build/utilities.sh
 RUN /pd_build/nodejs.sh
-RUN /pd_build/redis.sh
+
+RUN rm -f /etc/service/nginx/down
 
 RUN npm install -g grunt-cli
 
