@@ -36,3 +36,4 @@ ADD webapp.conf /etc/nginx/sites-available/default
 
 ONBUILD ADD . /home/app/webapp
 ONBUILD RUN cd /home/app/webapp && npm install && grunt
+ONBUILD RUN [ -e /home/app/webapp/nginx.conf ] && cp /home/app/webapp/nginx.conf /etc/nginx/main.d/app.conf
