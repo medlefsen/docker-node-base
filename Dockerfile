@@ -11,19 +11,9 @@ CMD ["/sbin/my_init"]
 # for features. Uncomment the features you want:
 #
 #   Build system and git.
-RUN /build/utilities.sh
-#   Ruby support.
-#RUN /build/ruby1.9.sh
-#RUN /build/ruby2.0.sh
-#RUN /build/ruby2.1.sh
-#   Python support.
-#RUN /build/python.sh
-#   Node.js and Meteor support.
-RUN /build/nodejs.sh
-RUN /build/redis.sh
-
-RUN rm -f /etc/service/redis/down
-RUN rm -f /etc/service/nginx/down
+RUN /pd_build/utilities.sh
+RUN /pd_build/nodejs.sh
+RUN /pd_build/redis.sh
 
 RUN npm install -g grunt-cli
 
